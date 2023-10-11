@@ -3,5 +3,5 @@ Welcome to my personal scripts collection! Here, you will find a series of scrip
 
 <h2> Introduction </h2>
 <p>
-        To get started, selected the desired branch according the to programming language name!
+        To get started, selected the desired branch according to the programming language name!
 </p>
