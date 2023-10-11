@@ -1,2 +1,7 @@
-# ScriptCollection_private
-A collection of scripts that I developed across all these years!
+# Scripts Collection
+Welcome to my personal scripts collection! Here, you will find a series of scripts written in various programming languages!
+
+<h2> Introduction </h2>
+<p>
+        To get started, selected the desired branch according to the programming language name!
+</p>
