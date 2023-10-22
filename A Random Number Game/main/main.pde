@@ -1,14 +1,14 @@
-int numeroRandomizado, numeroDigitado, index, tentativa, chances;
+int randomizedNumber, typedNumber, index, currentAttempt, amountOfAttempts;
 String textoDigitado;
 Boolean podeAtualizarNumero, podeAtualizarTexto, podeDigitar, gameOver, maquinaGanhou;
 char tecla, tipo;
 
 void setup()
 {
-  numeroRandomizado = parseInt(random(0, 100));
+  randomizedNumber = parseInt(random(0, 100));
   index = 0;
-  tentativa = 1;
-  chances = 4;
+  currentAttempt = 0;
+  amountOfAttempts = 3;
   textoDigitado = "";
   
   gameOver = false;
@@ -31,27 +31,52 @@ void draw()
 
 void keyPressed()
 {
-  if(!gameOver)
+  switch (gameOver)
   {
-    if(index == 0)
-    {
-      if((key == 'p' || key == 'P') || (key == 'd' || key == 'D'))
+    case true:
+      OnGameOver();
+      break;
+    case false:
+      OnNewAttempt();
+      break;
+  }
+}
+
+void OnNewAttempt()
+{
+  switch (index)
+  {
+    case 0:
+      if (str(key).toLowerCase() != "p" && str(key).toLowerCase() != "d") return;
+      tipo = str(key.toLowerCase);
+      index = 1;
+      podeAtualizarTexto = true;
+      break;
+    case 2:
+      switch (tipo)
       {
-        if(key == 'p' || key == 'P')
-          tipo = 'p';
-        else if (key == 'd' || key == 'D')
-          tipo = 'd';
-      
-        index = 1;
-        podeAtualizarTexto = true;
-      }
-    }
-    else if(index == 2)
-    {
-      if(tipo == 'd')
-      {
-        if(podeDigitar)
-        {
+        case "p":
+          switch (str(key).toLowerCase())
+          {
+            case "s":
+              maquinaGanhou = true;
+              index = 3;
+              podeAtualizarTexto = true;
+              break;
+            case "n":
+              maquinaGanhou = false;
+              index = 3;
+              podeAtualizarTexto = true;
+              break;
+            default:
+              index = 2;
+              println("");
+              println("Digite uma opção válida!");
+              break;
+          }
+          break;
+        case "d":
+          if (!podeDigitar) return;
           if(key == '1' || key == '2' || key == '3' || key == '4' || key == '5' || key == '6' || key == '7' || key == '8' || key == '9' || key == '0')
           {
             tecla = key;
@@ -74,46 +99,26 @@ void keyPressed()
               podeAtualizarTexto = true;
             }
           }
-        }
+          break;
       }
-      else if(tipo == 'p')
-      {
-        if(key == 's' || key == 'S')
-        {
-          maquinaGanhou = true;
-          index = 3;
-          podeAtualizarTexto = true;
-        }
-        else if(key == 'n' || key == 'N')
-        {
-          maquinaGanhou = false;
-          index = 3;
-          podeAtualizarTexto = true;
-        }
-        else
-        {
-          println("");
-          println("Digite uma opção válida!");
-          
-          index = 2;
-        }
-      }
-    }
-  }
-  else
-  {
-    if(key == 's' || key == 'S')
-      Recomecar();
-    else if(key == 'n' || key == 'N')
-      exit();
-    else
-    {
-      println("");
-      println("Digite uma opção válida!");
-    }
+      break;
   }
 }
-
+void OnGameOverReached()
+{
+  switch(str(key).toLowerCase())
+  {
+    case "s":
+      Recomecar();
+      break; 
+    case "n":
+      exit();
+      break; 
+    default:
+      println("\nDigite uma opção válida!");
+      break;
+  }
+}
 
 
 void AtualizarTexto()
