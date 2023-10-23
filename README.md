@@ -1,7 +1,4 @@
-# Scripts Collection
-Welcome to my personal scripts collection! Here, you will find a series of scripts written in various programming languages!
-
-<h2> Introduction </h2>
-<p>
-        To get started, selected the desired branch according to the programming language name!
-</p>
+# C
+All projects in this branch refer to the C programming language!
+<br>
+If you have any questions, please refer to https://learn.microsoft.com/pt-br/cpp/c-language.
