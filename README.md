@@ -1,4 +1,4 @@
 # Processing
-All projects in this branch refer to Processing!
+All projects in this branch refer to the Processing programming language!
 <br>
-Find more at https://processing.org.
+If you have any questions, please refer to https://processing.org.
