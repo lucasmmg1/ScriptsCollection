@@ -1,53 +1,43 @@
-float x1, x2, y1, y2, largura1, largura2, altura1, altura2;
+PVector posA, posB, sizeA, sizeB;
 
 void setup()
 {
   size(800, 600);
-  
-  x1 = random(width);
-  x2 = random(width);
-  y1 = random(height);
-  y2 = random(height);
-
-  largura1 = random(6, 255);
-  largura2 = random(6, 255);
-  altura1 = random(6, 255);
-  altura2 = random(6, 255);
+  RandomizePosition();
 }
-
 void draw()
 {
   background(255);
-  DetectarColisao();
-  DesenharQuadrado();
+  DetectSquareCollision();
+  DrawSquare();
 }
-
 void keyPressed()
 {
-  if(key == 'r' || key == 'R')
+  switch (str(key).toLowerCase())
   {
-    x1 = random(width);
-    x2 = random(width);
-    y1 = random(height);
-    y2 = random(height);
-
-    largura1 = random(6, 255);
-    largura2 = random(6, 255);
-    altura1 = random(6, 255);
-    altura2 = random(6, 255);
+    case "r":
+      RandomizePosition();
+      break;
   }
 }
 
-void DesenharQuadrado()
+void RandomizePosition()
 {
-  rect(x1, y1, largura1, altura1);
-  rect(x2, y2, largura2, altura2);
+  sizeA = new PVector(random(6, 255), random(6, 255));
+  sizeB = new PVector(random(6, 255), random(6, 255));
+  
+  posA = new PVector(random(width), random(height));
+  posB = new PVector(random(width), random(height));
 }
-
-void DetectarColisao()
+void DetectSquareCollision()
 {
-  if ((x2 <= x1 + largura1 && x2 >= x1 || x1 <= x2 + largura2 && x1 >= x2) && (y2 <= y1 + altura1 && y2 >= y1 || y1 <= y2 + altura2 && y1 >= y2))
+  if ((posA.x + sizeA.x >= posB.x && posA.x <= posB.x + sizeB.x) && (posA.y + sizeA.y >= posB.y && posA.y <= posB.y + sizeB.y))
     fill(255, 0, 0);
   else
     fill(0, 0, 255);
+}
+void DrawSquare()
+{
+  rect(posA.x, posA.y, sizeA.x, sizeA.y);
+  rect(posB.x, posB.y, sizeB.x, sizeB.y);
 }
