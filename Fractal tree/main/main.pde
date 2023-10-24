@@ -40,7 +40,7 @@ private void DrawTree(float branchLength)
 private void DrawBranch(float branchLength) 
 {
   line(0, 0, 0, -branchLength);
-  translate(0, -branchLength); //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+  translate(0, -branchLength); //<>//
 }
 
 private void Right(float branchLength)
@@ -58,9 +58,6 @@ private void Left(float branchLength)
   DrawTree(branchLength * (0.67 + random(-0.1, 0.1)));
   popMatrix();
 }
-
-
-
 private void DrawLeaves()
 {
   float leavesRadious = random(1, 5);
