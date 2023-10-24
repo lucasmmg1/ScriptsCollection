@@ -1,6 +1,5 @@
 int NUM_LINES = 10;
-
-float t;
+float distance;
 
 void setup()
 {
@@ -16,34 +15,34 @@ void draw()
   translate(width / 2, height / 2);
   
   for (int i = 0; i < NUM_LINES; i++)
-    DrawFirstCombination(t + i);
+    DrawFirstCombination(distance + i);
     
   for (int i = 0; i < NUM_LINES; i++)
-    DrawSecondCombination(t + i);
+    DrawSecondCombination(distance + i);
     
-  t += 0.25;
+  distance += 0.25;
 }
 
-void DrawFirstCombination(float t)
+void DrawFirstCombination(float d)
 {
   stroke(255, 235, 235);
   
-  float x = sin(t / 10) * 125 + sin(t / 5) * 20;
-  float y = cos(-t / 10) * 75 + sin(t / 5) * 50;
-  float w = sin(t / 10) * 200 + sin(t) * 2 + cos(t);
-  float h = -cos(t / 20) * 225 + cos(t / 12) * 20;
+  float x = sin(d / 10) * 125 + sin(d / 5) * 20;
+  float y = cos(-d / 10) * 75 + sin(d / 5) * 50;
+  float w = sin(d / 10) * 200 + sin(d) * 2 + cos(d);
+  float h = -cos(d / 20) * 225 + cos(d / 12) * 20;
   
   line(x, y, w, h);
 }
 
-void DrawSecondCombination(float t)
+void DrawSecondCombination(float d)
 {
   stroke(255, 75, 75);
   
-  float x = cos(-t / 10) * 75 + sin(t / 5) * 50;;
-  float y = sin(t / 10) * 125 + sin(t / 5) * 20;
-  float w = -cos(t / 20) * 225 + cos(t / 12) * 20;
-  float h = sin(t / 10) * 200 + sin(t) * 2 + cos(t);
+  float x = cos(-d / 10) * 75 + sin(d / 5) * 50;;
+  float y = sin(d / 10) * 125 + sin(d / 5) * 20;
+  float w = -cos(d / 20) * 225 + cos(d / 12) * 20;
+  float h = sin(d / 10) * 200 + sin(d) * 2 + cos(d);
   
   line(x, y, w, h);
 }
