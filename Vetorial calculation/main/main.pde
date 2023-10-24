@@ -1,14 +1,20 @@
+float numberToCalculate;
+
+void setup()
+{
+  numberToCalculate = 4;
+}
 void draw()
 {
-  println("O resultado fatorial do número passado é " + CalcularVetorial(4));
+  println(numberToCalculate + "! equals to " + VetorialCalculation(numberToCalculate));
 }
 
-float CalcularVetorial(float numero)
+float VetorialCalculation(float n)
 {
-  float resultado = 1;
+  float result = 1;
   
-  for(int x = 1; x <= numero; x++)
-    resultado *= x;
+  for (int x = 1; x <=n; x++)
+    result *= x;
   
-  return resultado;
+  return result;
 }

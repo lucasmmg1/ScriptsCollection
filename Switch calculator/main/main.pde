@@ -1,36 +1,29 @@
-float n1, n2, resultado, codigoDeErro;
-char operacao;
-
 public void setup()
 {
-  n1 = 2;
-  n2 = 7;
-  resultado = codigoDeErro = 0;
-  operacao = 'j'; 
-  
-  switch (Character.toString(operacao).toLowerCase().charAt(0))
+  Calculate(2, 7, '*');
+}
+
+void Calculate(int n1, int n2, char operation)
+{
+  switch (str(operation).toLowerCase())
   {
-    case 'a':
-      resultado = n1 + n2;
+    case "+":
+      println("The sum between " + n1 + " and " + n2 + " equals to " + (n1 + n2));
       break;
 
-    case 's':
-      resultado = n1 - n2;
+    case "-":
+      println("The subtraction between " + n1 + " and " + n2 + " equals to " + (n1 - n2));
       break;
 
-    case 'm':
-      resultado = n1 * n2;
+    case "*":
+      println("The multiplication between " + n1 + " and " + n2 + " equals to " + (n1 * n2));
       break;
 
-    case 'd':
-      resultado = n1 / n2;
+    case "/":
+      println("The division between " + n1 + " and " + n2 + " equals to " + (n1 / n2));
       break;
       
     default:
-      codigoDeErro = 1;
-      
+      println("Invalid operation!") ;
   }
-  
-  println(codigoDeErro == 0 ? "O resultado da conta entre os dois números é " + resultado : "A operação digitada é inválida");
-  exit();
 }

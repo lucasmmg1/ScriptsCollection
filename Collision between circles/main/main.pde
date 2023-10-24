@@ -1,22 +1,47 @@
-float x1, x2, y1, y2, raio1, raio2, distancia, dX, dY;
-size(800, 600);
+PVector posA, posB, sizeA, sizeB;
 
-x1 = random(width);
-x2 = random(width);
-y1 = random(height);
-y2 = random(height);
-raio1 = random(25, 150);
-raio2 = random(25, 150);
+void setup()
+{
+  size(800, 600);
+  RandomizePosition();
+}
+void draw()
+{
+  background(255);
+  DetectCircleCollision();
+  DrawCircle();
+}
+void keyPressed()
+{
+  switch (str(key).toLowerCase())
+  {
+    case "r":
+      RandomizePosition();
+      break;
+  }
+}
 
-dX = x1 - x2;
-dY = y1 - y2;
+void RandomizePosition()
+{
+  sizeA = new PVector(random(25, 150), random(25, 150));
+  sizeB = new PVector(random(25, 150), random(25, 150));
+  
+  posA = new PVector(random(width), random(height));
+  posB = new PVector(random(width), random(height));
+}
+void DetectCircleCollision()
+{
+  var dX = posA.x - posB.x;
+  var dY = posA.y - posB.y;
+  var distance = sqrt(dX * dX + dY * dY);
 
-distancia = sqrt(dX * dX + dY * dY);
-
-if(distancia < raio1 + raio2)
-  fill(255, 0, 0);
-else
-  fill(0, 0, 255);
-
-ellipse(x1, y1, raio1 * 2, raio1 * 2);
-ellipse(x2, y2, raio2 * 2, raio2 * 2);
+  if (distance < sizeA.x / 2 + sizeB.x / 2)
+    fill(255, 0, 0);
+  else
+    fill(0, 0, 255);
+}
+void DrawCircle()
+{
+  ellipse(posA.x, posA.y, sizeA.x, sizeA.y);
+  ellipse(posB.x, posB.y, sizeB.x, sizeB.y);
+}

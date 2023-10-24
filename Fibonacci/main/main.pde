@@ -1,21 +1,19 @@
 void setup()
 {
-  println("O termo é: " + AcharTermo(42));
+  FindValue(5);
 }
 
-int AcharTermo(int t)
+void FindValue(int t)
 {
-  int termoAtual, termoAnterior, temp;
+  int current = 1;
+  int previous = 0;
   
-  termoAtual = 1;
-  termoAnterior = temp = 0;
-  
-  for (int x = 1; x < t; x++)
+  for (int x = 1; x < t - 1; x++)
   {
-    temp = termoAtual;
-    termoAtual += termoAnterior;
-    termoAnterior = temp;
+    var tmp = current;
+    current += previous;
+    previous = tmp;
   }
   
-  return termoAtual;
+  print("The " + t + " value of Fibonacci is " + (t == 1 ? 0 : current));
 }

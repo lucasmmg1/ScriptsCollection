@@ -1,15 +1,15 @@
 import gamecomponentsforprocessing.library.*;
 
 int numberOfHoles;
-Vector3 rotationAngle;
+PVector rotationAngle;
 ArrayList<Box> spongeBoxes;
 
 public void setup()
 {
   size(800, 750, P3D);
-  rotationAngle = Vector3.zero;
+  rotationAngle = new PVector(0, 0, 0);
   spongeBoxes = new ArrayList<Box>();
-  spongeBoxes.add(new Box(new Vector3(0, 0, 0), new Vector3(200, 200, 200)));
+  spongeBoxes.add(new Box(new PVector(0, 0, 0), new PVector(200, 200, 200)));
 }
 public void draw()
 {
@@ -34,9 +34,9 @@ public void draw()
   rotateZ(rotationAngle.z);
 
   for (Box spongeBox : spongeBoxes)
-    spongeBox.Show();
+    spongeBox.Update();
 
-  rotationAngle = new Vector3(rotationAngle.x + 0.01f, rotationAngle.y + 0.01f, rotationAngle.z + 0.01f);
+  rotationAngle = new PVector(rotationAngle.x + 0.01f, rotationAngle.y + 0.01f, rotationAngle.z + 0.01f);
 }
 public void mousePressed()
 {
@@ -44,7 +44,7 @@ public void mousePressed()
 
   for (Box spongeBox : spongeBoxes)
   {
-    ArrayList<Box> tempSmallerBoxes = spongeBox.GenerateSlices();
+    ArrayList<Box> tempSmallerBoxes = spongeBox.OnBoxClicked();
     smallerBoxes.addAll(tempSmallerBoxes);
   }
 

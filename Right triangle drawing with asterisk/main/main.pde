@@ -1,20 +1,16 @@
 void setup()
 {
-  DesenharTrianguloComAsterisco(8);
+  var baseValue = 8;
+  DrawAsteriskTriangle(baseValue);
 }
 
-void DesenharTrianguloComAsterisco(int valorBase)
+void DrawAsteriskTriangle(int o)
 {
-  int largura = valorBase;
+  if (o == 0) return;
+  DrawAsteriskTriangle(o - 1);
   
-  for(int i = 0; i < valorBase; i++)
-  {
-    for (int x = 0; x < largura; x++)
-    {
-      print("*");
-    }
-    
-    println("");
-    largura--;
-  }
+  for(int x = 0; x < o; x++)
+    print("*");
+  
+  println(" ");
 }

@@ -1,32 +1,18 @@
-int[] tamanhos = {400, 450, 500, 550};
-int quadradoW, quadradoH;
-
-color c = color(random(0, 255), random(0, 255), random(0, 255));
+PVector squareSize, circleSize;
 
 void setup()
 {
   size(600, 600);
-  
-  quadradoW = quadradoH = tamanhos[int(random(tamanhos.length))];
-  println(quadradoW);
+  squareSize = new PVector(500, 500);
+  circleSize = new PVector(500, 500);
 }
-
 void draw()
 {
   background(127);
   
   fill(255);
-  rect(width / 2 - quadradoW / 2, height / 2 - quadradoH / 2, quadradoW, quadradoH);
+  rect(width / 2 - squareSize.x / 2, height / 2 - squareSize.y / 2, squareSize.x, squareSize.y);
   
-  fill(c);
-  ellipse(width / 2, height / 2, quadradoW, quadradoH);
-}
-
-void keyPressed()
-{
-  if (key == 'R' || key == 'r')
-  {
-    c = color(random(0, 255), random(0, 255), random(0, 255));
-    quadradoW = quadradoH = tamanhos[int(random(tamanhos.length))];
-  }
+  fill(255, 0, 0);
+  ellipse(width / 2, height / 2, circleSize.x, circleSize.y);
 }

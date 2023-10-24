@@ -1,38 +1,27 @@
-String palavraInvertida;
-char[] letras, palavraDigitada; 
-boolean isPalindromo;
-
 void setup()
 {
-  palavraInvertida = "";
-  isPalindromo = false;
-  
-  ChecarPalindromo("ovo"); //<>//
+  CheckForPalindrome("ovo"); //<>//
 }
 
-void ChecarPalindromo(String palavra)
+void CheckForPalindrome(String word)
 {
-  palavraDigitada = new char[palavra.length()];
-  letras = new char[palavra.length()];
-  
-  for (int x = 0; x < palavra.length(); x++) //<>//
+  char[] w = new char[word.length()];
+  for (int x = word.length(); x > 0; x--)
   {
-    palavraDigitada[x] = palavra.charAt(x);
-    letras[x] = palavra.charAt(x);
+    w[0 + word.length() - x] = word.charAt(x - 1);
   }
-    
-  reverse(letras);
   
-  for (int x = 0; x < letras.length; x++)
+  reverse(w);
+  
+  var isPalindrome = true;
+  for (int x = 0; x < word.length(); x++)
   {
-    if(palavraDigitada[x] == letras[(letras.length - 1) - x])
-      isPalindromo = true;
-    else
-      isPalindromo = false;
+    println(word.charAt(x));
+    println(w[x]);
+    if (word.charAt(x) == w[x]) continue;
+    isPalindrome = false;
+    break;
   }
-    
-  if(isPalindromo)
-    println("A palavra " + palavra + " é palíndromo");
-  else
-    println("A palavra " + palavra + " não é palíndromo"); //<>// //<>//
+  
+  println("The typed word" + (isPalindrome ? " is palindrome" : " is not palindrome")); //<>// //<>//
 }
